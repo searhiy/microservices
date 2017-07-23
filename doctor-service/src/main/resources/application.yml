@@ -1,11 +1,8 @@
 server:
-  port: 8761
+  port: 10001
 spring:
   application:
-    name: eureka-server
-  boot:
-    admin:
-      context-path: /admin
+    name: doctor-service
 # standalone instance
 #eureka:
 #  instance:
@@ -18,3 +15,6 @@ spring:
 management:
   security:
     enabled: false
+#eureka:
+#  client:
+#    backup-registry-impl:
