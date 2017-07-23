@@ -1,0 +1,56 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.4.RELEASE'
+		springBootAdminServerVersion = '1.5.2'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+//apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+ext {
+	springCloudVersion = 'Dalston.SR2'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+//	compile('org.springframework.cloud:spring-cloud-starter-config')
+//	compile('org.springframework.cloud:spring-cloud-config-server')
+//	compile('org.springframework.boot:spring-boot-starter-cloud-connectors')
+	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	//spring-cloud-starter-eureka-server
+	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
+
+	compile("de.codecentric:spring-boot-admin-server:${springBootAdminServerVersion}")
+	compile("de.codecentric:spring-boot-admin-server-ui:${springBootAdminServerVersion}")
+//	compile('org.springframework.cloud:spring-cloud-starter-feign')
+//	compile('org.springframework.boot:spring-boot-starter-web')
+//	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+	compileOnly('org.projectlombok:lombok')
+//    compile("org.jolokia:jolokia-core")
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+//	testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
+//	testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+//	testCompile('org.springframework.cloud:spring-cloud-contract-wiremock')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}

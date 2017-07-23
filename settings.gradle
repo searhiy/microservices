@@ -1,0 +1,2 @@
+rootProject.name = 'microservices'
+include 'doctor-service', 'hospital-service', 'patient-service', 'eureka-server', 'shared-autoconfig'
